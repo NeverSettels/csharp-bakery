@@ -13,11 +13,15 @@ _A small Console application that will allow a user to purchase bread and pastri
 | Behavior | Input | Output |
 |----------|:-----:|--------|
 | User is greeted when they run the program |user imputs into the console dotnet run | Bright cheery welcome with ascii art |
-|  User is prompted to enter how much money they have | user types 100 into the console | user sees "You have $100 to spend" | 
-|User is presented with the option to buy a pastry or a bread | user types "bread" into the console | user sees "you have: 1 bread, 0 pastries and $96 "|
-| user is asked buy "something else? [Y]es or [N]o" | User selects Y | User is presented with the option to buy a pastry or a bread |
-|User is presented with the option to buy a pastry or a bread | user types "pastry" into the console | user sees "you have: 1 bread, 1 pastries and $91 "|
-|if user tryes to buy something and they cant afford it ends the program with a good bye" | user types "bread" into the console | user sees "you have: 5 bread, 4 pastries and $3, You cant afford anything else! " and "goodbye" in ascii| 
+| User is asked if they want to enter the bakery| user enter Y | Title appears | 
+| User is asked if they want to enter the bakery| user enter  N| User is told they spent $0 at the bakery and is told good bye| 
+| User is asked if they want to purchase something | user enter  N| User is told they spent $0 at the bakery and is told good bye| 
+| User is asked if they want to purchase something | user enter Y | User is displayed menu with 3 types of bread (Classic, Sour, Defualt) and 4 types of pastry as well as being told about their price and type | 
+|User is asked the name of the bread or pastry they want and how many | user says 'something that doesnt exist' and 4 | user sees "Sorry we dont sell that make another selection" |
+|User is asked the name of the bread or pastry they want and how many | user says 'classic' and 4 | user is shown their current total after applicable discounts are applied "your total cost is $18" |
+| User is asked buy "something else? [Y]es or [N]o" | User selects Y | User is asked to name what they want and how many |
+|User is asked the name of the bread or pastry they want and how many | User says 'bm' and 3 | user is  shown their current total after applicable discounts are applied "your total cost is $23" |
+| User is asked buy "something else? [Y]es or [N]o" | User selects N | User is told they spent $23 at the bakery and is told good bye|
 
 
 

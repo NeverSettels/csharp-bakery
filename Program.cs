@@ -39,7 +39,7 @@ ______ _                    _      ______       _
 `--._           '--- |_  |:|'--'|:::::::|:::::::::::::::::::::::|
 _____`--._ ''      . '---'``--._|:::::::|:::::::::::::::::::::::|
 ----------`--._          ''      ``--.._|:::::::::::::::::::::::|
-`--._ _________`--._'     ~   --     .   ''-----.................|
+`--._ _________`--._'     ~   --     .   ''-----................|
      `--._----------`--._.  _           -- . :''           -    ''
           `--._ _________`--._ :'  o            -- . :''      -- . ''
  -- . ''       `--._ ---------`--._   -- . :''
@@ -56,6 +56,17 @@ _____`--._ ''      . '---'``--._|:::::::|:::::::::::::::::::::::|
 | | __| | | || | | | | | | | ___ \ \ / |  __|  | |
 | |_\ \ \_/ /\ \_/ / |/ /  | |_/ / | | | |___  |_|
  \____/\___/  \___/|___/   \____/  \_/ \____/  (_)";
+
+private static string _bigSpender = @"
+  /$$$$$$   /$$$$$$   /$$$$$$  /$$$$$$$        /$$$$$$$  /$$     /$$ /$$$$$$$$       /$$
+ /$$__  $$ /$$__  $$ /$$__  $$| $$__  $$      | $$__  $$|  $$   /$$/| $$_____/      | $$
+| $$  \__/| $$  \ $$| $$  \ $$| $$  \ $$      | $$  \ $$ \  $$ /$$/ | $$            | $$
+| $$ /$$$$| $$  | $$| $$  | $$| $$  | $$      | $$$$$$$   \  $$$$/  | $$$$$         | $$
+| $$|_  $$| $$  | $$| $$  | $$| $$  | $$      | $$__  $$   \  $$/   | $$__/         |__/
+| $$  \ $$| $$  | $$| $$  | $$| $$  | $$      | $$  \ $$    | $$    | $$                
+|  $$$$$$/|  $$$$$$/|  $$$$$$/| $$$$$$$/      | $$$$$$$/    | $$    | $$$$$$$$       /$$
+ \______/  \______/  \______/ |_______/       |_______/     |__/    |________/      |__/";
+
   private static string _enter = @"Do you wish to enter the Bakery? [Y] yes [N] no";
   private static int _cost = 0;
   private static Bread baguette = new Bread("Classic","Baguette", 6);
@@ -87,7 +98,7 @@ _____`--._ ''      . '---'``--._|:::::::|:::::::::::::::::::::::|
         }
         static string YesOrNo(string _yesOrNo)
         {
-        StyleSheet styleSheet = new StyleSheet(Color.White);
+        StyleSheet styleSheet = new StyleSheet(Color.Gray);
         styleSheet.AddStyle("Y*", Color.Green);
         styleSheet.AddStyle("N*", Color.Red);
          Console.WriteLineStyled(_yesOrNo, styleSheet);
@@ -116,7 +127,7 @@ _____`--._ ''      . '---'``--._|:::::::|:::::::::::::::::::::::|
         {
             for (int i = 0; i < str.Length; i++)
             {
-                Console.Write(str[i], Color.Turquoise);
+                Console.Write(str[i], Color.Magenta);
                 System.Threading.Thread.Sleep(50);
             }
             Console.WriteLine();
@@ -137,8 +148,21 @@ _____`--._ ''      . '---'``--._|:::::::|:::::::::::::::::::::::|
         }
         static void GoodBye()
         {
+          if(_cost >= 100)
+        { 
+           
+          TypeLineSlow($"WOW! Look at you Big Spender! You spent ${_cost} at Pierre's Bakery Today!");
+          BigSpender(_bigSpender);
+        } 
+        else if(_cost > 0)
+        {
           TypeLineSlow($"You spent ${_cost} at Pierre's Bakery Today!");
           TypeLineFast(_goodBye);
+        } 
+        else
+        {
+          TypeLineFast(_goodBye);
+        }
         }
         static void ShowMenu()
         {
@@ -224,6 +248,20 @@ _____`--._ ''      . '---'``--._|:::::::|:::::::::::::::::::::::|
           int fiveDollarPieces = amount/3;
           int fullPricePice = amount%3;
           return (5*fiveDollarPieces)+(fullPricePice*price);
+        }
+        static void BigSpender(string str)
+        {
+        StyleSheet styleSheet = new StyleSheet(Color.Yellow);
+        styleSheet.AddStyle("([|])*", Color.Green);
+        styleSheet.AddStyle("([/])*", Color.Green);
+        styleSheet.AddStyle("([_])*", Color.Green);
+        for (int i = 0; i < str.Length; i++)
+            {
+                Console.WriteStyled(str[i], styleSheet);
+                System.Threading.Thread.Sleep(5);
+            }
+            Console.WriteLine();
+
         }
     }
 }

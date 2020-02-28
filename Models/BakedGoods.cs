@@ -3,24 +3,12 @@ namespace Bakery.Models
 {
     public class Bread
     {
-        private static int _breadLeft = 10;
+        
 
         private string _nameBread;
         private string _typeBread;
         private int _priceBread;
-        
-        public static int BreadLeft
-    {
-        get
-        {
-            return _breadLeft; 
-        }
-         set
-        {
-            _breadLeft = value; 
-        }
-    
-    }
+      
        public string NameBread 
     {
         get
@@ -64,20 +52,12 @@ namespace Bakery.Models
 
     public class Pastry
     {
-        private static int _pastryLeft = 10;
+     
         private string _namePastry;
         private string _typePastry;
         private string _flavorPastry;
         private int _pricePastry;
         
-        public static int PastryLeft
-    {
-        get
-        {
-            return _pastryLeft; 
-        }
-    
-    }
       public string TypePastry 
     {
         get
@@ -124,7 +104,7 @@ namespace Bakery.Models
     }
     public Pastry(string name, string type, string flavor,int price)
     {
-      _namePastry = name;
+        _namePastry = name;
         _typePastry = type;
         _flavorPastry = flavor;
         _pricePastry = price; 

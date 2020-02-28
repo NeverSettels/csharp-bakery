@@ -146,7 +146,7 @@ ______ _                    _      ______       _
         }
         static void ShowMenu()
         {
-          TypeLineFast("Remeber Breads are buy 2 get 1 free! and Pastries are 3 for 5! (NO mixing and matching)\n");
+          TypeLineFast("Remeber Breads are buy 2 get 1 free! and Pastries are 3 for S5! (NO mixing and matching)\n");
           TypeLineSlow("BREADS:");
           foreach(Bread bread in _breads )
           {
@@ -177,19 +177,24 @@ ______ _                    _      ______       _
             _cost += price;
             break;
            case "choco":
-            //something
+            price = calcPastry(chocolateDonut.PricePastry, amount);
+            _cost += price;
             break;
            case "glaze":
-            //something
+            price = calcPastry(glazedDonut.PricePastry, amount);
+            _cost += price;
             break;
            case "jellied":
-            //something
+            price = calcPastry(jellyDonut.PricePastry, amount);
+            _cost += price;
             break;
            case "bm":
-            //something
+            price = calcPastry(muffin.PricePastry, amount);
+            _cost += price;
             break;
             default:
-              Console.WriteLine("Default case");
+              TypeLineSlow("Sorry! We Dont Sell that! Please enter your choice again.");
+              Choosing();
               break;
          }
         }
@@ -220,11 +225,9 @@ ______ _                    _      ______       _
         }
         static int calcPastry(int price, int amount)
         {
-          int freePieces = amount/3;
-          return price*amount-(freePieces*price);
+          int fiveDollarPieces = amount/3;
+          int fullPricePice = amount%3;
+          return (5*fiveDollarPieces)+(fullPricePice*price);
         }
     }
 }
-/*
-int w = amount/3
-price*amount-(w*price) */

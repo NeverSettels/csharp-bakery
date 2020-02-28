@@ -12,13 +12,14 @@ namespace Bakery
     class Program
     {
     private static string _bakeryName = @"
-  _____    _____   ________   ________    _____   _____        _____      ______      ____      __   ___    _____   ______    __      __ 
- / ____\  / ___/  (___  ___) (___  ___)  / ___/  (_   _)      / ____\    (_   _ \    (    )    () ) / __)  / ___/  (   __ \   ) \    / ( 
-( (___   ( (__        ) )        ) )    ( (__      | |       ( (___        ) (_) )   / /\ \    ( (_/ /    ( (__     ) (__) )   \ \  / /  
- \___ \   ) __)      ( (        ( (      ) __)     | |        \___ \       \   _/   ( (__) )   ()   (      ) __)   (    __/     \ \/ /   
-     ) ) ( (          ) )        ) )    ( (        | |   __       ) )      /  _ \    )    (    () /\ \    ( (       ) \ \  _     \  /    
- ___/ /   \ \___     ( (        ( (      \ \___  __| |___) )  ___/ /      _) (_) )  /  /\  \   ( (  \ \    \ \___  ( ( \ \_))     )(     
-/____/     \____\    /__\       /__\      \____\ \________/  /____/      (______/  /__(  )__\  ()_)  \_\    \____\  )_) \__/     /__\ ";
+______ _                    _      ______       _                   
+| ___ (_)                  ( )     | ___ \     | |                  
+| |_/ /_  ___ _ __ _ __ ___|/ ___  | |_/ / __ _| | _____ _ __ _   _ 
+|  __/| |/ _ \ '__| '__/ _ \ / __| | ___ \/ _` | |/ / _ \ '__| | | |
+| |   | |  __/ |  | | |  __/ \__ \ | |_/ / (_| |   <  __/ |  | |_| |
+\_|   |_|\___|_|  |_|  \___| |___/ \____/ \__,_|_|\_\___|_|   \__, |
+                                                               __/ |
+                                                              |___/ ";
   private static string _bakerypicture = @"
                 ..::::...
               .::      `'''':::..
@@ -53,13 +54,14 @@ namespace Bakery
   '-,._   \__.-`-;''`          ``--'`'''''''``-- `--'--. '
   ";
   private static string _enter = @"Do you wish to enter the Bakery? [Y] yes [N] no";
-  private static Bread baguette = new Bread("Baguette", 6);
-  private static Bread sourDoughRoll = new Bread("Sour Dough Roll", 4);
-  private static Bread normalRoll = new Bread("Roll", 2);
-  private static Pastry chocolateDonut = new Pastry("Donut", "Chocolate", 3);
-  private static Pastry glazedDonut = new Pastry("Donut", "Glazed", 3);
-  private static Pastry jellyDonut = new Pastry("Donut", "Jelly", 4);
-  private static Pastry muffin = new Pastry("Muffin", "Blueberry", 6);
+  private static int _cost = 0;
+  private static Bread baguette = new Bread("Classic","Baguette", 6);
+  private static Bread sourDoughRoll = new Bread("Sour","Roll", 4);
+  private static Bread normalRoll = new Bread("Default","Roll", 2);
+  private static Pastry chocolateDonut = new Pastry( "Choco" ,"Donut", "Chocolate", 3);
+  private static Pastry glazedDonut = new Pastry("Glaze ","Donut", "Glazed", 3);
+  private static Pastry jellyDonut = new Pastry("Jellied", "Donut", "Jelly", 4);
+  private static Pastry muffin = new Pastry("BM","Muffin", "Blueberry", 6);
   private static List<Bread> _breads = new List<Bread>{baguette, sourDoughRoll, normalRoll};
   private static List<Pastry> _pastrys = new List<Pastry>{chocolateDonut, glazedDonut, jellyDonut, muffin};
 
@@ -69,7 +71,7 @@ namespace Bakery
         {
        
         Console.Clear();
-        Console.WriteLine(_bakerypicture);
+        TypeLineFast(_bakerypicture);
         string result = YesOrNo(_enter);
         if(result=="y")
         {
@@ -124,6 +126,10 @@ namespace Bakery
           if(purchase == "y")
           {
             ShowMenu();
+            string choise = Console.ReadLine().ToLower();
+            string amountStr = Console.ReadLine();
+            int amount = int.Parse(amountStr);
+            
           }
           else{
             GoodBye();
@@ -138,16 +144,20 @@ namespace Bakery
           TypeLineSlow("BREADS:");
           foreach(Bread bread in _breads )
           {
-            TypeLineSlow($"{bread.TypeBread}, Price: ${bread.PriceBread} ");
+            TypeLineSlow($" Name: {bread.NameBread}, Type: {bread.TypeBread}, Price: ${bread.PriceBread} ");
           }
            TypeLineSlow("PASTRIES:");
           foreach(Pastry pastry in _pastrys )
           {
-            TypeLineSlow($"Pastry: {pastry.TypePastry}, Flavor: {pastry.FlavorPastry}, Price: ${pastry.PricePastry} ");
+            TypeLineSlow($"  Name: {pastry.NamePastry}, Pastry: {pastry.TypePastry}, Flavor: {pastry.FlavorPastry}, Price: ${pastry.PricePastry} ");
           }
-          
-
-
+        }
+        static void AddCost(string selection, int amount )
+        {
+          //yif(selection == )
         }
     }
 }
+/*
+int w = amount/3
+price*amount-(w*price) */

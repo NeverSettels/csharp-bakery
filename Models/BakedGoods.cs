@@ -4,6 +4,8 @@ namespace Bakery.Models
     public class Bread
     {
         private static int _breadLeft = 10;
+
+        private string _nameBread;
         private string _typeBread;
         private int _priceBread;
         
@@ -18,6 +20,17 @@ namespace Bakery.Models
             _breadLeft = value; 
         }
     
+    }
+       public string NameBread 
+    {
+        get
+        {
+            return _nameBread; 
+        }
+        set
+        {
+            _nameBread = value; 
+        }
     }
       public string TypeBread 
     {
@@ -41,8 +54,9 @@ namespace Bakery.Models
             _priceBread = value; 
         }
     }
-    public Bread(string type, int price)
+    public Bread(string name,string type, int price)
     {
+        _nameBread = name;
         _typeBread = type;
         _priceBread = price; 
     }
@@ -51,6 +65,7 @@ namespace Bakery.Models
     public class Pastry
     {
         private static int _pastryLeft = 10;
+        private string _namePastry;
         private string _typePastry;
         private string _flavorPastry;
         private int _pricePastry;
@@ -72,6 +87,17 @@ namespace Bakery.Models
         set
         {
             _typePastry = value; 
+        }
+    }
+      public string NamePastry 
+    {
+        get
+        {
+            return _namePastry; 
+        }
+        set
+        {
+            _namePastry = value; 
         }
     }
       public string FlavorPastry 
@@ -96,8 +122,9 @@ namespace Bakery.Models
             _pricePastry = value; 
         }
     }
-    public Pastry(string type, string flavor,int price)
+    public Pastry(string name, string type, string flavor,int price)
     {
+      _namePastry = name;
         _typePastry = type;
         _flavorPastry = flavor;
         _pricePastry = price; 

@@ -13,6 +13,10 @@ namespace Bakery.Models
         {
             return _breadLeft; 
         }
+         set
+        {
+            _breadLeft = value; 
+        }
     
     }
       public string TypeBread 

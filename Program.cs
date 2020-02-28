@@ -54,33 +54,65 @@ namespace Bakery
   private static string _enter = @"Do you wish to enter the Bakery? [Y] yes [N] no";
         static void Main()
         {
+       
+        Console.Clear();
+        Console.WriteLine(_bakerypicture);
+        string result = YesOrNo(_enter);
+        if(result=="y")
+        {
+          Shoping();
+        }else
+        {
+
+        }
+       
+        }
+        static string YesOrNo(string _yesOrNo)
+        {
         StyleSheet styleSheet = new StyleSheet(Color.White);
         styleSheet.AddStyle("Y[a-z]*", Color.Green);
         styleSheet.AddStyle("N[a-z]*", Color.Red);
-        TypeLineTitle(_bakeryName);
-        Console.Clear();
-        Console.WriteLine(_bakerypicture);
-        Console.WriteLineStyled(_enter, styleSheet);
-        Console.Write("Enter: ");
+         Console.WriteLineStyled(_yesOrNo, styleSheet);
+         Console.Write("Enter: ");
         string input = Console.ReadLine().ToLower();
-        }
-        static void TypeLineTitle(string str)
+        if(input == "y")
         {
-          string welcome = "Welcome to:";
-          Console.SetCursorPosition((Console.WindowWidth - welcome.Length) / 2, Console.CursorTop);
-          for (int i = 0; i < welcome.Length; i++)
-            {
-                Console.Write(welcome[i], Color.Yellow);
-                System.Threading.Thread.Sleep(100);
-            }
+          return "y";
+        }
+        else
+        {
+          return "n";
+        }
+        }
+        static void TypeLineFast(string str)
+        {
             Console.WriteLine();
-            Console.SetCursorPosition((Console.WindowWidth - 100) / 2, Console.CursorTop);
             for (int i = 0; i < str.Length; i++)
             {
                 Console.Write(str[i], Color.Turquoise);
                 System.Threading.Thread.Sleep(5);
             }
             Console.WriteLine();
+        }
+         static void TypeLineSlow(string str)
+        {
+            Console.WriteLine();
+            for (int i = 0; i < str.Length; i++)
+            {
+                Console.Write(str[i], Color.Turquoise);
+                System.Threading.Thread.Sleep(50);
+            }
+            Console.WriteLine();
+        }
+
+        static void Shoping()
+        {
+          TypeLineFast(_bakeryName);
+          YesOrNo("Hi! Welcome to the Bakery! would you Like to Make a purchase? [Y] or [N]");
+        }
+        static void GoodBye()
+        {
+          
         }
     }
 }

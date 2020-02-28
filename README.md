@@ -53,12 +53,10 @@ If you have any questions, comments, or concerns, feel free to contact the conte
 
 * GitBash
 
-
-
-* ESlint
+* [Colorful.Console](http://colorfulconsole.com/)
 
 ## **License**
 
-Copyright (c) 2020 **Bakery**
+Copyright (c) 2020 **C# Bakery**
 
 ### **_MIT_**

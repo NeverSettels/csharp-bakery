@@ -53,14 +53,15 @@ namespace Bakery
   '-,._   \__.-`-;''`          ``--'`'''''''``-- `--'--. '
   ";
   private static string _enter = @"Do you wish to enter the Bakery? [Y] yes [N] no";
-  private static Bread baguette = new Bread("baguette", 6);
-  private static Bread sourDoughRoll = new Bread("Roll", 4);
+  private static Bread baguette = new Bread("Baguette", 6);
+  private static Bread sourDoughRoll = new Bread("Sour Dough Roll", 4);
   private static Bread normalRoll = new Bread("Roll", 2);
   private static Pastry chocolateDonut = new Pastry("Donut", "Chocolate", 3);
   private static Pastry glazedDonut = new Pastry("Donut", "Glazed", 3);
   private static Pastry jellyDonut = new Pastry("Donut", "Jelly", 4);
-  private List<Bread> _breads = new List<Bread>{baguette, sourDoughRoll, normalRoll};
-  private List<Pastry> _pastrys = new List<Pastry>{chocolateDonut, glazedDonut, jellyDonut};
+  private static Pastry muffin = new Pastry("Muffin", "Blueberry", 6);
+  private static List<Bread> _breads = new List<Bread>{baguette, sourDoughRoll, normalRoll};
+  private static List<Pastry> _pastrys = new List<Pastry>{chocolateDonut, glazedDonut, jellyDonut, muffin};
 
           
 
@@ -108,7 +109,6 @@ namespace Bakery
         }
          static void TypeLineSlow(string str)
         {
-            Console.WriteLine();
             for (int i = 0; i < str.Length; i++)
             {
                 Console.Write(str[i], Color.Turquoise);
@@ -135,7 +135,17 @@ namespace Bakery
         }
         static void ShowMenu()
         {
-         
+          TypeLineSlow("BREADS:");
+          foreach(Bread bread in _breads )
+          {
+            TypeLineSlow($"{bread.TypeBread}, Price: ${bread.PriceBread} ");
+          }
+           TypeLineSlow("PASTRIES:");
+          foreach(Pastry pastry in _pastrys )
+          {
+            TypeLineSlow($"Pastry: {pastry.TypePastry}, Flavor: {pastry.FlavorPastry}, Price: ${pastry.PricePastry} ");
+          }
+          
 
 
         }

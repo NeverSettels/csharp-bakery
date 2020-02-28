@@ -1,12 +1,13 @@
 ﻿using System;
+using Bakery.Models;
 
-namespace bakery
+namespace Bakery
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Console.WriteLine("Hello World!");
+            //UI
         }
     }
 }

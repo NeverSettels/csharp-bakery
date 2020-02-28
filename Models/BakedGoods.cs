@@ -43,12 +43,63 @@ namespace Bakery.Models
         _priceBread = price; 
     }
     }
+
     public class Pastry
     {
-        //type of Pastry
-        //falvour
-        //price
-        //loaves left
+        {
+        private static int _pastryLeft = 10;
+        private string _typePastry;
+        private string _flavorPastry;
+        private int _pricePastry;
+        
+        public static int PastryLeft
+    {
+        get
+        {
+            return _pastryLeft; 
+        }
+    
+    }
+      public string TypePastry 
+    {
+        get
+        {
+            return _typePastry; 
+        }
+        set
+        {
+            _typePastry = value; 
+        }
+    }
+      public string FlavorPastry 
+    {
+        get
+        {
+            return _flavorPastry; 
+        }
+        set
+        {
+            _flavorPastry = value; 
+        }
+    }
+      public int PricePastry 
+    {
+        get
+        {
+            return _pricePastry; 
+        }
+        set
+        {
+            _pricePastry = value; 
+        }
+    }
+    public Pastry(string type, string flavor,int price)
+    {
+        _typePastry = type;
+        _flavorPastry = flavor;
+        _pricePastry = price; 
+    }
+    }
     }
 
 }

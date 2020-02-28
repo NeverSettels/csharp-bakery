@@ -46,7 +46,6 @@ namespace Bakery.Models
 
     public class Pastry
     {
-        {
         private static int _pastryLeft = 10;
         private string _typePastry;
         private string _flavorPastry;
@@ -100,6 +99,6 @@ namespace Bakery.Models
         _pricePastry = price; 
     }
     }
-    }
+    
 
 }

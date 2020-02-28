@@ -29,7 +29,7 @@ ______ _                    _      ______       _
                           ,/ \,|  =-|
                         ,/ /`\ \,   |
                       ,/ /`___`\ \,-|
-                    ,/ /'.-:;-.`\ \|
+                    ,/ /'.-:;-.`\ \ |
                   ,/ /` //_|_|_\\ `\ \, ,/\,
                 ,/ /`   ||_|_|_||   `\;/ /\ \,
               ,/ /`     ||_|_|_||   ,/ /`/\`\ \,
@@ -53,6 +53,13 @@ ______ _                    _      ______       _
    )-._/ _\ _,-('    __.;-'-;__      `''''''    ||`      -._
   '-,._   \__.-`-;''`          ``--'`'''''''``-- `--'--. '
   ";
+  private static string _goodBye = @"
+ _____ _____  ___________  ________   _______   _ 
+|  __ \  _  ||  _  |  _  \ | ___ \ \ / /  ___| | |
+| |  \/ | | || | | | | | | | |_/ /\ V /| |__   | |
+| | __| | | || | | | | | | | ___ \ \ / |  __|  | |
+| |_\ \ \_/ /\ \_/ / |/ /  | |_/ / | | | |___  |_|
+ \____/\___/  \___/|___/   \____/  \_/ \____/  (_)";
   private static string _enter = @"Do you wish to enter the Bakery? [Y] yes [N] no";
   private static int _cost = 0;
   private static Bread baguette = new Bread("Classic","Baguette", 6);
@@ -78,15 +85,15 @@ ______ _                    _      ______       _
           Shoping();
         }else
         {
-
+          GoodBye();
         }
        
         }
         static string YesOrNo(string _yesOrNo)
         {
         StyleSheet styleSheet = new StyleSheet(Color.White);
-        styleSheet.AddStyle("Y[a-z]*", Color.Green);
-        styleSheet.AddStyle("N[a-z]*", Color.Red);
+        styleSheet.AddStyle("Y*", Color.Green);
+        styleSheet.AddStyle("N*", Color.Red);
          Console.WriteLineStyled(_yesOrNo, styleSheet);
          Console.Write("Enter: ");
         string input = Console.ReadLine().ToLower();
@@ -126,10 +133,7 @@ ______ _                    _      ______       _
           if(purchase == "y")
           {
             ShowMenu();
-            string choise = Console.ReadLine().ToLower();
-            string amountStr = Console.ReadLine();
-            int amount = int.Parse(amountStr);
-            
+            Choosing();
           }
           else{
             GoodBye();
@@ -137,10 +141,12 @@ ______ _                    _      ______       _
         }
         static void GoodBye()
         {
-          
+          TypeLineSlow($"You spent ${_cost} at Pierre's Bakery Today!");
+          TypeLineFast(_goodBye);
         }
         static void ShowMenu()
         {
+          TypeLineFast("Remeber Breads are buy 2 get 1 free! and Pastries are 3 for 5! (NO mixing and matching)\n");
           TypeLineSlow("BREADS:");
           foreach(Bread bread in _breads )
           {
@@ -155,31 +161,67 @@ ______ _                    _      ______       _
         }
         static void AddCost(string selection, int amount )
         {
+          int price = 0;
           switch(selection)
          {
            case "classic":
-           //something
-           break;
+            price = calcBread(baguette.PriceBread, amount);
+            _cost += price;
+            break;
            case "sour":
-           //something
-           break;
+            price = calcBread(sourDoughRoll.PriceBread, amount);
+            _cost += price;
+            break;
            case "default":
-           //something
-           break;
+            price = calcBread(normalRoll.PriceBread, amount);
+            _cost += price;
+            break;
            case "choco":
-           //something
-           break;
+            //something
+            break;
            case "glaze":
-           //something
-           break;
+            //something
+            break;
            case "jellied":
-           //something
-           break;
+            //something
+            break;
            case "bm":
-           //something
-           break;
-           
+            //something
+            break;
+            default:
+              Console.WriteLine("Default case");
+              break;
          }
+        }
+        static void Choosing()
+        {
+          TypeLineSlow("Enter the name of what you would like:");
+          Console.Write("Your Choice: ");
+          string choise = Console.ReadLine().ToLower();
+          TypeLineSlow($"Enter the amount of {choise} you would like:");
+          Console.Write("How many: ");
+          string amountStr = Console.ReadLine();
+          int amount = int.Parse(amountStr);
+          AddCost(choise,amount);
+          TypeLineSlow($"Your Total Cost is ${_cost}");
+          string buyMore = YesOrNo("Would you like to get something else? [Y] or [N]");
+          if(buyMore=="y"){
+            Choosing();
+          }
+          else
+          {
+            GoodBye();
+          }
+        }
+        static int calcBread(int price, int amount)
+        {
+          int freePieces = amount/3;
+          return price*amount-(freePieces*price);
+        }
+        static int calcPastry(int price, int amount)
+        {
+          int freePieces = amount/3;
+          return price*amount-(freePieces*price);
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Drawing;
 using Console = Colorful.Console;
 using Bakery.Models;
+using StyleSheet = Colorful.StyleSheet;
 
 
 
@@ -17,10 +18,51 @@ namespace Bakery
      ) ) ( (          ) )        ) )    ( (        | |   __       ) )      /  _ \    )    (    () /\ \    ( (       ) \ \  _     \  /    
  ___/ /   \ \___     ( (        ( (      \ \___  __| |___) )  ___/ /      _) (_) )  /  /\  \   ( (  \ \    \ \___  ( ( \ \_))     )(     
 /____/     \____\    /__\       /__\      \____\ \________/  /____/      (______/  /__(  )__\  ()_)  \_\    \____\  )_) \__/     /__\ ";
+  private static string _bakerypicture = @"
+                ..::::...
+              .::      `'''':::..
+        '...::'               .----.
+                             /_.--._\
+                            ,  |=   |
+                          ,/ \,|  =-|
+                        ,/ /`\ \,   |
+                      ,/ /`___`\ \,-|
+                    ,/ /'.-:;-.`\ \|
+                  ,/ /` //_|_|_\\ `\ \, ,/\,
+                ,/ /`   ||_|_|_||   `\;/ /\ \,
+              ,/ /`     ||_|_|_||   ,/ /`/\`\ \,
+            ,/ /`    ==_`-------' ,/ /` ~\/~ `\ \,
+        ,/ /`==_     __|___-  ,/ /` ==-=|__|     `\ \,
+      ,/ /`        --=      ,/ /`            __|-- `\ \,
+    ,/ /`  |__ ..----.. = ,/ /`    ()    .--.     ()`\ \,
+   / /`|     .'_.-;;-._'./ /;     {__} .'.--.'.  {__} ;\ \
+  |/`  |_| =/.; | || | ; |/` | |::|/.'  _____  '.\ |::| | `\|
+       |   |/_|_|_||_|_|_\| |= \::/||  /|_|_|\  || \::/ |
+       | , ||-|-|-||-|-|-||=|   JL || |_|_|_|_| ||  JL  |
+       |/_\||_|_|_||_|_|_||-|'     ||   .:::.   ||=_   _|
+       /_ (|| | | || | | || |   ==_|| /:::::::\ || __P__|
+       /_\ \|-|-|-||-|-|-|| |      || |::(`)::| ||/\ |  `\
+      `>/ _\\_|_|_||_|_|_||-|-'| __|| \/`\+/`\/ ||||_____|
+      /_/   <-------------' |      ||()\_/Y\_/  ||/  || |
+     /  ` \_ ( ==_  __|-    |_|_   ||   / / \   || =_|| |
+    `/_) | _ <`   __        |   =  ||  /_/ \_\  ||   || |
+     >  /     \ == _  ==_   | -    ||           ||=  || |
+   /_/   ( \  `\ _| =__   =|-__|_|  |-----------||_| || |
+   )-._/ _\ _,-('    __.;-'-;__      `''''''    ||`      -._
+  '-,._   \__.-`-;''`          ``--'`'''''''``-- `--'--. '
+  ";
+  private static string _enter = @"Do you wish to enter the Bakery? [Y] yes [N] no";
         static void Main()
         {
-       
+        StyleSheet styleSheet = new StyleSheet(Color.White);
+        styleSheet.AddStyle("Y[a-z]*", Color.Green);
+        styleSheet.AddStyle("N[a-z]*", Color.Red);
         TypeLineTitle(_bakeryName);
+        Console.Clear();
+        Console.WriteLine(_bakerypicture);
+        Console.WriteLineStyled(_enter, styleSheet);
+        Console.Write("Enter: ");
+        string input = Console.ReadLine().ToLower();
         }
         static void TypeLineTitle(string str)
         {

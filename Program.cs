@@ -22,9 +22,9 @@ ______ _                    _      ______       _
                                                               |___/ ";
   private static string _bakerypicture = @"
                 ..::::...
-              .::      `'''':::..
-        '...::'               .----.
-                             /_.--._\
+              .::      `''''::::.,,
+        '...::'                .----.
+                              /_.--._\
                             ,  |=   |
                           ,/ \,|  =-|
                         ,/ /`\ \,   |
@@ -33,7 +33,7 @@ ______ _                    _      ______       _
                   ,/ /` //_|_|_\\ `\ \, ,/\,
                 ,/ /`   ||_|_|_||   `\;/ /\ \,
               ,/ /`     ||_|_|_||   ,/ /`/\`\ \,
-            ,/ /`    ==_`-------' ,/ /` ~\/~ `\ \,
+          _,/ /`     ==_`-------',_/ /` ~\/~ `\ \,_
         ,/ /`==_     __|___-  ,/ /` ==-=|__|     `\ \,
       ,/ /`        --=      ,/ /`            __|-- `\ \,
     ,/ /`  |__ ..----.. = ,/ /`    ()    .--.     ()`\ \,
@@ -104,7 +104,7 @@ ______ _                    _      ______       _
             Console.WriteLine();
             for (int i = 0; i < str.Length; i++)
             {
-                Console.Write(str[i], Color.Turquoise);
+                Console.Write(str[i], Color.Blue);
                 System.Threading.Thread.Sleep(5);
             }
             Console.WriteLine();
@@ -146,15 +146,40 @@ ______ _                    _      ______       _
           {
             TypeLineSlow($" Name: {bread.NameBread}, Type: {bread.TypeBread}, Price: ${bread.PriceBread} ");
           }
+          Console.WriteLine();
            TypeLineSlow("PASTRIES:");
           foreach(Pastry pastry in _pastrys )
           {
-            TypeLineSlow($"  Name: {pastry.NamePastry}, Pastry: {pastry.TypePastry}, Flavor: {pastry.FlavorPastry}, Price: ${pastry.PricePastry} ");
+            TypeLineSlow($" Name: {pastry.NamePastry}, Pastry: {pastry.TypePastry}, Flavor: {pastry.FlavorPastry}, Price: ${pastry.PricePastry} ");
           }
         }
         static void AddCost(string selection, int amount )
         {
-          //yif(selection == )
+          switch(selection)
+         {
+           case "classic":
+           //something
+           break;
+           case "sour":
+           //something
+           break;
+           case "default":
+           //something
+           break;
+           case "choco":
+           //something
+           break;
+           case "glaze":
+           //something
+           break;
+           case "jellied":
+           //something
+           break;
+           case "bm":
+           //something
+           break;
+           
+         }
         }
     }
 }
